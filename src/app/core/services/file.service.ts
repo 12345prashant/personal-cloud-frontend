@@ -34,16 +34,21 @@ export class FileService {
 
     downloadFile(uuid: string) {
 
-  this.http.get<any>(`${this.FILES_URL}/${uuid}`)
-    .subscribe(response => {
+    this.http.get<any>(
+        `${this.FILES_URL}/${uuid}`
+    ).subscribe(response => {
 
-      const a = document.createElement('a');
+        const a = document.createElement('a');
 
-      a.href = response.downloadUrl;
+        a.href = response.downloadUrl;
 
-      a.target = '_blank';
+        a.target = "_self";
 
-      a.click();
+        document.body.appendChild(a);
+
+        a.click();
+
+        document.body.removeChild(a);
 
     });
 
