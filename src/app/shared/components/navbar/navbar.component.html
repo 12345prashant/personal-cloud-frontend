@@ -1,0 +1,123 @@
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+
+    <div class="container">
+
+        <a
+            class="navbar-brand fw-bold"
+            routerLink="/">
+
+            <i class="bi bi-cloud-fill me-2"></i>
+
+            Personal Cloud
+
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbar">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div
+            class="collapse navbar-collapse"
+            id="navbar">
+
+            <ul class="navbar-nav ms-auto align-items-center">
+
+                <li class="nav-item">
+
+                    <a
+                        routerLink="/"
+                        routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact:true}"
+                        class="nav-link">
+
+                        Dashboard
+
+                    </a>
+
+                </li>
+
+                <li
+                    class="nav-item"
+                    *ngIf="authService.isLoggedIn()">
+
+                    <a
+                        routerLink="/files"
+                        routerLinkActive="active"
+                        class="nav-link">
+
+                        Files
+
+                    </a>
+
+                </li>
+
+                <li
+                    class="nav-item"
+                    *ngIf="authService.isLoggedIn()">
+
+                    <a
+                        routerLink="/settings"
+                        routerLinkActive="active"
+                        class="nav-link">
+
+                        Settings
+
+                    </a>
+
+                </li>
+
+                <li
+                    class="nav-item ms-3"
+                    *ngIf="!authService.isLoggedIn()">
+
+                    <a
+                        routerLink="/login"
+                        class="btn btn-outline-light rounded-pill px-4">
+
+                        Login
+
+                    </a>
+
+                </li>
+
+                <li
+                    class="nav-item ms-2"
+                    *ngIf="!authService.isLoggedIn()">
+
+                    <a
+                        routerLink="/register"
+                        class="btn btn-primary rounded-pill px-4">
+
+                        Register
+
+                    </a>
+
+                </li>
+
+                <li
+                    class="nav-item ms-3"
+                    *ngIf="authService.isLoggedIn()">
+
+                    <button
+                        class="btn btn-danger rounded-pill px-4"
+                        (click)="logout()">
+
+                        Logout
+
+                    </button>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>

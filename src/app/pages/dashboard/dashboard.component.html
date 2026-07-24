@@ -1,0 +1,342 @@
+
+<div class="container py-4">
+
+    <!-- Hero -->
+
+    <div class="hero-card mb-4">
+
+        <div>
+
+            <h2>Your Personal Cloud</h2>
+
+            <p>
+                Your own secure cloud powered by your personal devices.
+            </p>
+
+        </div>
+
+        <div class="hero-storage">
+
+            <div class="hero-number">
+
+                {{formatGB(dashboard?.availableStorage ?? 0)}} GB
+
+            </div>
+
+            <small>Available Storage</small>
+
+        </div>
+
+    </div>
+
+    <!-- Summary -->
+
+    <div class="row g-4 mb-5">
+
+        <div class="col-md-4">
+
+            <div class="summary-card">
+
+                <div class="summary-icon">
+                    💻
+                </div>
+
+                <h6>Total Devices</h6>
+
+                <h2>{{dashboard?.totalDevices}}</h2>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="summary-card">
+
+                <div class="summary-icon">
+                    💾
+                </div>
+
+                <h6>Total Storage</h6>
+
+                <h2>
+
+                    {{formatGB(dashboard?.totalStorage ?? 0)}} GB
+
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="summary-card">
+
+                <div class="summary-icon">
+                    ☁️
+                </div>
+
+                <h6>Available</h6>
+
+                <h2>
+
+                    {{formatGB(dashboard?.availableStorage ?? 0)}} GB
+
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Pair Device -->
+
+    <div class="pair-card mb-5">
+
+        <div class="d-flex justify-content-between align-items-center">
+
+            <div>
+
+                <h3>
+
+                    Pair New Device
+
+                </h3>
+
+                <p class="text-muted mb-0">
+
+                    Connect another Android device to your cloud.
+
+                </p>
+
+            </div>
+
+            <button
+
+                    class="btn btn-primary btn-lg rounded-pill"
+
+                    (click)="generateCode()"
+
+                    [disabled]="pairingCode">
+
+                Generate Code
+
+            </button>
+
+        </div>
+
+        <div *ngIf="pairingCode" class="mt-4">
+
+            <div class="pairing-box">
+
+                {{pairingCode}}
+
+            </div>
+
+            <div class="mt-3 text-center">
+
+                ⏳ Expires in
+
+                <strong>
+
+                    {{getFormattedTime()}}
+
+                </strong>
+
+            </div>
+
+            <div class="text-center mt-3">
+
+                <button
+
+                        class="btn btn-outline-primary rounded-pill"
+
+                        (click)="copyCode()">
+
+                    Copy Code
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h3>
+
+            Your Storage Nodes
+
+        </h3>
+
+        <span class="text-muted">
+
+            {{dashboard?.nodes?.length || 0}} Devices
+
+        </span>
+
+    </div>
+
+    <div
+            class="empty-state"
+            *ngIf="dashboard?.nodes?.length==0">
+
+        <div class="empty-icon">
+
+            ☁️
+
+        </div>
+
+        <h4>
+
+            No Storage Nodes
+
+        </h4>
+
+        <p>
+
+            Generate a pairing code to connect your first device.
+
+        </p>
+
+    </div>
+
+    <div
+            class="row g-4"
+            *ngIf="dashboard?.nodes?.length">
+
+        <div
+                class="col-lg-4"
+                *ngFor="let node of dashboard?.nodes">
+
+            <div class="node-card">
+
+                <div class="d-flex justify-content-between align-items-start">
+
+                    <div>
+
+                        <div class="device-icon">
+
+                            📱
+
+                        </div>
+
+                        <h5>
+
+                            {{node.nodeName}}
+
+                        </h5>
+
+                    </div>
+
+                    <span
+
+                            class="badge rounded-pill"
+
+                            [ngClass]="{
+
+                    'bg-success':node.status=='ONLINE',
+
+                    'bg-danger':node.status!='ONLINE'
+
+                }">
+
+                        {{node.status}}
+
+                    </span>
+
+                </div>
+
+                <div class="storage-text mt-4">
+
+                    {{formatGB(node.freeSpace)}} GB
+
+                </div>
+
+                <small class="text-muted">
+
+                    Free of {{formatGB(node.totalSpace)}} GB
+
+                </small>
+
+                <div class="progress mt-3">
+
+                    <div
+
+                            class="progress-bar"
+
+                            [style.width.%]="getProgress(node)">
+
+                    </div>
+
+                </div>
+
+                <div class="row mt-4">
+
+                    <div class="col-6">
+
+                        <small class="text-muted">
+
+                            Used
+
+                        </small>
+
+                        <div>
+
+                            <strong>
+
+                                {{formatGB(node.usedSpace)}} GB
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-6">
+
+                        <small class="text-muted">
+
+                            Total
+
+                        </small>
+
+                        <div>
+
+                            <strong>
+
+                                {{formatGB(node.totalSpace)}} GB
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <div class="node-info">
+
+                    🌐 {{node.ipAddress}}:{{node.port}}
+
+                </div>
+
+                <div class="node-info">
+
+                    ❤️ {{node.lastHeartbeat}}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

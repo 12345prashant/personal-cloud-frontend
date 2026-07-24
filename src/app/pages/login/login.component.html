@@ -1,0 +1,47 @@
+<div class="container">
+
+    <div class="card">
+
+        <h2>Login</h2>
+
+        <input
+                type="email"
+                placeholder="Email"
+                [(ngModel)]="email">
+
+        <input
+                type="password"
+                placeholder="Password"
+                [(ngModel)]="password">
+
+        <button
+                (click)="login()"
+                [disabled]="loading">
+
+            {{ loading ? 'Logging In...' : 'Login' }}
+
+        </button>
+
+        <p
+                class="error"
+                *ngIf="error">
+
+            {{ error }}
+
+        </p>
+
+        <p>
+
+            Don't have an account?
+
+            <a routerLink="/register">
+
+                Register
+
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
