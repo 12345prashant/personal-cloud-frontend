@@ -211,3 +211,254 @@ body{
     margin-bottom:20px;
 
 }
+
+/* -------------------------------
+   Tablet
+--------------------------------*/
+@media (max-width: 992px){
+
+    .hero-card{
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap:25px;
+
+        padding:30px;
+
+    }
+
+    .hero-storage{
+
+        text-align:left;
+
+    }
+
+    .hero-number{
+
+        font-size:42px;
+
+    }
+
+}
+
+/* -------------------------------
+   Mobile
+--------------------------------*/
+@media (max-width:768px){
+
+    .container{
+
+        padding-left:16px;
+
+        padding-right:16px;
+
+    }
+
+    .hero-card{
+
+        padding:25px;
+
+        border-radius:18px;
+
+    }
+
+    .hero-card h2{
+
+        font-size:28px;
+
+    }
+
+    .hero-card p{
+
+        font-size:15px;
+
+    }
+
+    .hero-number{
+
+        font-size:36px;
+
+    }
+
+    .summary-card{
+
+        padding:22px;
+
+    }
+
+    .summary-card h2{
+
+        font-size:28px;
+
+    }
+
+    .summary-icon{
+
+        font-size:30px;
+
+    }
+
+    .pair-card{
+
+        padding:22px;
+
+        border-radius:18px;
+
+    }
+
+    .pair-card .d-flex{
+
+        flex-direction:column;
+
+        align-items:flex-start !important;
+
+        gap:20px;
+
+    }
+
+    .pair-card button{
+
+        width:100%;
+
+    }
+
+    .pairing-box{
+
+        font-size:34px;
+
+        letter-spacing:8px;
+
+        padding:16px;
+
+        word-break:break-all;
+
+    }
+
+    .node-card{
+
+        padding:22px;
+
+        border-radius:18px;
+
+    }
+
+    .storage-text{
+
+        font-size:28px;
+
+    }
+
+    .device-icon{
+
+        width:48px;
+
+        height:48px;
+
+        font-size:22px;
+
+    }
+
+    .node-info{
+
+        font-size:13px;
+
+        overflow-wrap:anywhere;
+
+    }
+
+    .empty-state{
+
+        padding:40px 20px;
+
+    }
+
+    .empty-icon{
+
+        font-size:55px;
+
+    }
+
+}
+
+/* -------------------------------
+   Small Phones
+--------------------------------*/
+@media (max-width:480px){
+
+    .hero-card{
+
+        padding:20px;
+
+    }
+
+    .hero-card h2{
+
+        font-size:24px;
+
+    }
+
+    .hero-number{
+
+        font-size:30px;
+
+    }
+
+    .summary-card{
+
+        padding:18px;
+
+    }
+
+    .summary-card h2{
+
+        font-size:24px;
+
+    }
+
+    .pair-card{
+
+        padding:18px;
+
+    }
+
+    .pair-card h3{
+
+        font-size:22px;
+
+    }
+
+    .pairing-box{
+
+        font-size:28px;
+
+        letter-spacing:4px;
+
+        padding:14px;
+
+    }
+
+    .storage-text{
+
+        font-size:24px;
+
+    }
+
+    .device-icon{
+
+        width:42px;
+
+        height:42px;
+
+        font-size:20px;
+
+    }
+
+    .btn{
+
+        width:100%;
+
+    }
+
+}
